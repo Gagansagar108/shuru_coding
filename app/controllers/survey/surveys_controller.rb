@@ -1,8 +1,8 @@
 class Survey::SurveyController < ApplicationController
     def create 
-        survey_params = get_params
+        survey_params = get_params[:servey]
 
-        ActiveRecord::Base.trasactions do 
+        ActiveRecord::Base.transaction do 
             survey = Survey.new(survey_params)
 
 
@@ -10,7 +10,7 @@ class Survey::SurveyController < ApplicationController
                 return render json: { message: 'something went wrong'}, status: 422
             end 
             
-            survey_question_params = get_params[:servey_questions]
+            survey_question_params = survey_params[:servey_questions]
 
             survey_question_params.each do |params|
                 question = SurveyQuestion.new(params)
