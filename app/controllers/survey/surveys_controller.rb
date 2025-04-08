@@ -13,7 +13,7 @@ class Survey::SurveysController < ApplicationController
             survey_question_params = get_params[:servey_questions].as_json
 
             survey_question_params.each do |params|
-                question = survey.questions.new(params)
+                question = survey.survey_questions.new(params)
                 question.save
             end 
         end 
