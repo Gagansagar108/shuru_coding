@@ -1,7 +1,7 @@
 class Survey::SurveysController < ApplicationController
     def create 
         binding.pry
-        survey_params = get_params[:survey]
+        survey_params = get_params.slice(:name).as_json
 
         ActiveRecord::Base.transaction do 
             survey = Survey.new(survey_params)
@@ -21,6 +21,9 @@ class Survey::SurveysController < ApplicationController
 
 
     def get_params
-        params.require(:survey).permit(survey_questions: [])
+        params.require(:survey).permit(
+    :name,
+    servey_questions: [:question, :question_type]
+  )
     end 
 end 
