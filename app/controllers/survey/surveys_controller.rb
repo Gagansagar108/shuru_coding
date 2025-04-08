@@ -1,6 +1,5 @@
 class Survey::SurveysController < ApplicationController
     def create 
-        binding.pry
         survey_params = get_params.slice(:name).as_json
 
         ActiveRecord::Base.transaction do 
@@ -18,7 +17,6 @@ class Survey::SurveysController < ApplicationController
             end 
         end 
     end 
-
 
     def get_params
         params.require(:survey).permit(
