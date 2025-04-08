@@ -1,7 +1,9 @@
 class Survey::ResponsesController < ApplicationController
 
     def create
-       response = Response.new(get_params)
+      user = User.new(params.slice(:name, :email))
+   
+       response = Response.new(get_params.merge!(user_id))
 
         unless response.save
             return render json: {message: "somethng_went wrong "}, status: 422
@@ -10,6 +12,7 @@ class Survey::ResponsesController < ApplicationController
         render json: {message: "successfull"}, status: 200
     end 
 
+ 
     def index 
         page = get_query_filters[:page] || 1
         per = get_query_filters[:per] || 10
@@ -22,7 +25,6 @@ class Survey::ResponsesController < ApplicationController
 
         render json: {message: query.as_json}, status: 200
     end 
-
 
 
     def get_params 

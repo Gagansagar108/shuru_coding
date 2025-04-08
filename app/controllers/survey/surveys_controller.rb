@@ -10,7 +10,7 @@ class Survey::SurveysController < ApplicationController
                 return render json: { message: 'something went wrong'}, status: 422
             end 
             
-            survey_question_params = survey_params[:survey_questions]
+            survey_question_params = get_params[:servey_questions].as_json
 
             survey_question_params.each do |params|
                 question = survey.questions.new(params)
