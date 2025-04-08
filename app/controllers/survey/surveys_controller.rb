@@ -1,10 +1,9 @@
-class Survey::SurveyController < ApplicationController
+class Survey::SurveysController < ApplicationController
     def create 
         survey_params = get_params[:servey]
 
         ActiveRecord::Base.transaction do 
             survey = Survey.new(survey_params)
-
 
             unless survey.save
                 return render json: { message: 'something went wrong'}, status: 422

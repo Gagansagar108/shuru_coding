@@ -1,4 +1,4 @@
-class Survey::ResponseController < ApplicationController
+class Survey::ResponsesController < ApplicationController
 
     def create
        response = Response.new(get_params)
