@@ -22,7 +22,7 @@ gem "solid_cable"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-
+gem 'pry'
 gem 'kaminari'
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
