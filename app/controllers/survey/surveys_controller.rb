@@ -1,5 +1,6 @@
 class Survey::SurveysController < ApplicationController
     def create 
+        binding.pry
         survey_params = get_params[:servey]
 
         ActiveRecord::Base.transaction do 
@@ -12,7 +13,7 @@ class Survey::SurveysController < ApplicationController
             survey_question_params = survey_params[:servey_questions]
 
             survey_question_params.each do |params|
-                question = SurveyQuestion.new(params)
+                question = survey.questions.new(params)
                 question.save
             end 
         end 
