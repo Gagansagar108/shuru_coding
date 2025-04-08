@@ -1,7 +1,7 @@
 namespace :survey  do 
-    resources :survey, only: [:create, :update] do 
+    resources :surveys, only: [:create, :update] do 
     end 
 
-    resources :response, only: [:create, :update] do 
+    resources :responses, only: [:create, :update] do 
     end 
 end 
